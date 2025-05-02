@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: gemini-api-proxy
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port 10000
+    plan: free
+    envVars:
+      - key: GEMINI_API_KEY
+        value: your-gemini-key-here
+      - key: GEMINI_API_ENDPOINT
+        value: https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent
